@@ -8,6 +8,9 @@
 \usepackage{amssymb}
 
 % Include other packages here, before hyperref.
+\newcommand{\rak}[1]{{\color{orange}{rak: #1}}}
+\newcommand{\ma}[1]{{\color{purple}{ma: #1}}}
+\newcommand{\mgm}[1]{{\color{cyan}{mgm: #1}}}
 
 % If you comment hyperref and then uncomment it, you should delete
 % egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
@@ -25,427 +28,201 @@
 \begin{document}
 
 %%%%%%%%% TITLE
-\title{\LaTeX\ Author Guidelines for CVPR Proceedings}
+\title{DREU Final Report}
 
-\author{First Author\\
-Institution1\\
-Institution1 address\\
-{\tt\small firstauthor@i1.org}
+\author{Madeleine Grunde-McLaughlin\\
+University of Pennsylvania\\
+Philadelphia, Pennsylvania\\
+{\tt\small mgrund@sas.upenn.edu}
 % For a paper whose authors are all at the same institution,
 % omit the following lines up until the closing ``}''.
 % Additional authors and addresses can be added with ``\and'',
 % just like the second author.
 % To save space, use either the email address or home page, not both
 \and
-Second Author\\
-Institution2\\
-First line of institution2 address\\
-{\tt\small secondauthor@i2.org}
+Maneesh Agrawala\\
+Stanford University\\
+Palo Alto\\
+{\tt\small maneesh@cs.stanford.edu}
 }
 
 \maketitle
 %\thispagestyle{empty}
 
 %%%%%%%%% ABSTRACT
-\begin{abstract}
-	TEST2
-
-   The ABSTRACT is to be in fully-justified italicized text, at the top
-   of the left-hand column, below the author and affiliation
-   information. Use the word ``Abstract'' as the title, in 12-point
-   Times, boldface type, centered relative to the column, initially
-   capitalized. The abstract is to be in 10-point, single-spaced type.
-   Leave two blank lines after the Abstract, then begin the main text.
-   Look at previous CVPR abstracts to get a feel for style and length.
-\end{abstract}
+%\begin{abstract}
+%	Unnecessary for DREU Final?
+%\end{abstract}
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
 
-Please follow the steps outlined below when submitting your manuscript to
-the IEEE Computer Society Press.  This style guide now has several
-important modifications (for example, you are no longer warned against the
-use of sticky tape to attach your artwork to the paper), so all authors
-should read this new version.
 
-%-------------------------------------------------------------------------
-\subsection{Language}
+\mgm{High level comment: is this too much or too little detail for an intro? anything else we should include?}
 
-All manuscripts must be in English.
+The ability to perceive and reason about human activity has been a long standing goal for Computer Vision. Research in Cognitive Science and Neuroscience suggests that humans decompose actions into a hierarchy of parts \cite{zacks2001events}. Therefore, in order to reason about activities, models should be capable of spatial and temporal reasoning over a subject's changing relationships with objects \cite{ji2020action}. One task developed to measure visual reasoning abilities is Visual Question Answering (VQA), in which a model answers questions about a visual input. 
 
-\subsection{Dual submission}
-
-Please refer to the author guidelines on the CVPR 2020 web page for a
-discussion of the policy on dual submissions.
-
-\subsection{Paper length}
-Papers, excluding the references section,
-must be no longer than eight pages in length. The references section
-will not be included in the page count, and there is no limit on the
-length of the references section. For example, a paper of eight pages
-with two pages of references would have a total length of 10 pages.
-{\bf There will be no extra page charges for CVPR 2020.}
-
-Overlength papers will simply not be reviewed.  This includes papers
-where the margins and formatting are deemed to have been significantly
-altered from those laid down by this style guide.  Note that this
-\LaTeX\ guide already sets figure captions and references in a smaller font.
-The reason such papers will not be reviewed is that there is no provision for
-supervised revisions of manuscripts.  The reviewing process cannot determine
-the suitability of the paper for presentation in eight pages if it is
-reviewed in eleven.  
-
-%-------------------------------------------------------------------------
-\subsection{The ruler}
-The \LaTeX\ style defines a printed ruler which should be present in the
-version submitted for review.  The ruler is provided in order that
-reviewers may comment on particular lines in the paper without
-circumlocution.  If you are preparing a document using a non-\LaTeX\
-document preparation system, please arrange for an equivalent ruler to
-appear on the final output pages.  The presence or absence of the ruler
-should not change the appearance of any other content on the page.  The
-camera ready copy should not contain a ruler. (\LaTeX\ users may uncomment
-the \verb'\cvprfinalcopy' command in the document preamble.)  Reviewers:
-note that the ruler measurements do not align well with lines in the paper
---- this turns out to be very difficult to do well when the paper contains
-many figures and equations, and, when done, looks ugly.  Just use fractional
-references (e.g.\ this line is $095.5$), although in most cases one would
-expect that the approximate location will be adequate.
-
-\subsection{Mathematics}
-
-Please number all of your sections and displayed equations.  It is
-important for readers to be able to refer to any particular equation.  Just
-because you didn't refer to it in the text doesn't mean some future reader
-might not need to refer to it.  It is cumbersome to have to use
-circumlocutions like ``the equation second from the top of page 3 column
-1''.  (Note that the ruler will not be present in the final copy, so is not
-an alternative to equation numbers).  All authors will benefit from reading
-Mermin's description of how to write mathematics:
-\url{http://www.pamitc.org/documents/mermin.pdf}.
-
-
-\subsection{Blind review}
-
-Many authors misunderstand the concept of anonymizing for blind
-review.  Blind review does not mean that one must remove
-citations to one's own work---in fact it is often impossible to
-review a paper unless the previous citations are known and
-available.
-
-Blind review means that you do not use the words ``my'' or ``our''
-when citing previous work.  That is all.  (But see below for
-techreports.)
-
-Saying ``this builds on the work of Lucy Smith [1]'' does not say
-that you are Lucy Smith; it says that you are building on her
-work.  If you are Smith and Jones, do not say ``as we show in
-[7]'', say ``as Smith and Jones show in [7]'' and at the end of the
-paper, include reference 7 as you would any other cited work.
-
-An example of a bad paper just asking to be rejected:
-\begin{quote}
-\begin{center}
-    An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of our
-   previous paper [1], and show it to be inferior to all
-   previously known methods.  Why the previous paper was
-   accepted without this analysis is beyond me.
-
-   [1] Removed for blind review
-\end{quote}
-
-
-An example of an acceptable paper:
-
-\begin{quote}
-\begin{center}
-     An analysis of the frobnicatable foo filter.
-\end{center}
-
-   In this paper we present a performance analysis of the
-   paper of Smith \etal [1], and show it to be inferior to
-   all previously known methods.  Why the previous paper
-   was accepted without this analysis is beyond me.
-
-   [1] Smith, L and Jones, C. ``The frobnicatable foo
-   filter, a fundamental contribution to human knowledge''.
-   Nature 381(12), 1-213.
-\end{quote}
-
-If you are making a submission to another conference at the same time,
-which covers similar or overlapping material, you may need to refer to that
-submission in order to explain the differences, just as you would if you
-had previously published related work.  In such cases, include the
-anonymized parallel submission~\cite{Authors14} as additional material and
-cite it as
-\begin{quote}
-[1] Authors. ``The frobnicatable foo filter'', F\&G 2014 Submission ID 324,
-Supplied as additional material {\tt fg324.pdf}.
-\end{quote}
-
-Finally, you may feel you need to tell the reader that more details can be
-found elsewhere, and refer them to a technical report.  For conference
-submissions, the paper must stand on its own, and not {\em require} the
-reviewer to go to a techreport for further details.  Thus, you may say in
-the body of the paper ``further details may be found
-in~\cite{Authors14b}''.  Then submit the techreport as additional material.
-Again, you may not assume the reviewers will read this material.
-
-Sometimes your paper is about a problem which you tested using a tool which
-is widely known to be restricted to a single institution.  For example,
-let's say it's 1969, you have solved a key problem on the Apollo lander,
-and you believe that the CVPR70 audience would like to hear about your
-solution.  The work is a development of your celebrated 1968 paper entitled
-``Zero-g frobnication: How being the only people in the world with access to
-the Apollo lander source code makes us a wow at parties'', by Zeus \etal.
-
-You can handle this paper like any other.  Don't write ``We show how to
-improve our previous work [Anonymous, 1968].  This time we tested the
-algorithm on a lunar lander [name of lander removed for blind review]''.
-That would be silly, and would immediately identify the authors. Instead
-write the following:
-\begin{quotation}
-\noindent
-   We describe a system for zero-g frobnication.  This
-   system is new because it handles the following cases:
-   A, B.  Previous systems [Zeus et al. 1968] didn't
-   handle case B properly.  Ours handles it by including
-   a foo term in the bar integral.
-
-   ...
-
-   The proposed system was integrated with the Apollo
-   lunar lander, and went all the way to the moon, don't
-   you know.  It displayed the following behaviours
-   which show how well we solved cases A and B: ...
-\end{quotation}
-As you can see, the above text follows standard scientific convention,
-reads better than the first version, and does not explicitly name you as
-the authors.  A reviewer might think it likely that the new paper was
-written by Zeus \etal, but cannot make any decision based on that guess.
-He or she would have to be sure that no other authors could have been
-contracted to solve problem B.
-\medskip
-
-\noindent
-FAQ\medskip\\
-{\bf Q:} Are acknowledgements OK?\\
-{\bf A:} No.  Leave them for the final copy.\medskip\\
-{\bf Q:} How do I cite my results reported in open challenges?
-{\bf A:} To conform with the double blind review policy, you can report results of other challenge participants together with your results in your paper. For your results, however, you should not identify yourself and should not mention your participation in the challenge. Instead present your results referring to the method proposed in your paper and draw conclusions based on the experimental comparison to other results.\medskip\\
-
-
+A variety of benchmarks have been created to test a model's abilities at the VQA task. ImageQA benchmarks take images as input \cite{johnson2017clevr, hudson2019gqa, antol2015vqa, zellers2019recognition, goyal2017making, krishna2017visual, zhu2016visual7w, kim2020answering} and VideoQA benchmarks take videos as input \cite{tapaswi2016movieqa, lei2018tvqa, jang2017tgif, kim2017deepstory, xu2017video, maharaj2017dataset, zeng2016leveraging, yu2019activitynet}. Since most VQA benchmarks are image-based, they test reasoning on spatial relationships, object attributes, and common sense understanding. However, questions about images cannot test temporal reasoning. 
 
 \begin{figure}[t]
 \begin{center}
-\fbox{\rule{0pt}{2in} \rule{0.9\linewidth}{0pt}}
-   %\includegraphics[width=0.8\linewidth]{egfigure.eps}
+\includegraphics[width=0.8\linewidth]{test_image}
 \end{center}
-   \caption{Example of caption.  It is set in Roman so that mathematics
-   (always set in Roman: $B \sin A = A \sin B$) may be included without an
-   ugly clash.}
+   \caption{}
 \label{fig:long}
 \label{fig:onecol}
 \end{figure}
 
-\subsection{Miscellaneous}
+For this reason, a growing number of VideoQA benchmarks have been released. Current benchmarks exhibit some weaknesses. First, many involve short videos ($<$ 10 seconds) \cite{jang2017tgif, kim2017deepstory, xu2017video, maharaj2017dataset}, or contain fewer than 200k questions \mgm{what counts as small?} \cite{tapaswi2016movieqa, lei2018tvqa, kim2017deepstory, xu2017video, jang2017tgif, yu2019activitynet, zeng2016leveraging}. Second, current benchmarks require at most two reasoning steps (e.g. "What happened to the woman before playing violin?" requires finding when the woman played violin, then looking at what happened before. \cite{yu2019activitynet}). They also do not use logical or comparative operators in their questions, which leaves out interesting and relevant ideas (e.g. "Which activity did they do for longer?"). Many VideoQA models get stuck when faced with questions that require multiple reasoning steps \cite{fan2019heterogeneous}, motivating a benchmark that thoroughly measures the ability to generalize to more steps \mgm{rephrase last part}. Third, several of these benchmarks integrate visual cues with movie and television dialogue and plot summaries \cite{lei2018tvqa, tapaswi2016movieqa, kim2017deepstory}. Their analysis found that question answering models depend more heavily on the dialogue input than on the visual input, reducing these benchmarks' effectiveness at measuring visual temporal reasoning \cite{tapaswi2016movieqa, lei2018tvqa}. Fourth, after the release of the first large ImageQA datasets, investigations found that their answer distributions were heavily skewed. This bias towards very common answers effectively reduces dependence on visual input and inflates accuracy scores \cite{goyal2017making, hudson2019gqa}. Some ImageQA datasets have worked to balance answer distributions, but to our knowledge no VideoQA datasets have systematically balanced answer distributions \cite{goyal2017making, hudson2019gqa}. 
 
-\noindent
-Compare the following:\\
-\begin{tabular}{ll}
- \verb'$conf_a$' &  $conf_a$ \\
- \verb'$\mathit{conf}_a$' & $\mathit{conf}_a$
-\end{tabular}\\
-See The \TeX book, p165.
+\mgm{Is this a useful thing to include: Few questions in existing benchmarks focus specifically on object manipulation through videos.} 
 
-The space after \eg, meaning ``for example'', should not be a
-sentence-ending space. So \eg is correct, {\em e.g.} is not.  The provided
-\verb'\eg' macro takes care of this.
+Finally, no VideoQA datasets break down their measurement of a model's success beyond the question type categories, as \cite{jang2017tgif} does with Repetition Count, Repeeating Action, State Transition, and Frame-based questions. Reasoning about videos requires multi-step reasoning, comparative and counting operators, flexibility with video length, appearance feature understanding, and fine and coarse motion understanding. A wider metrics suite would improve measurement of models' relative strengths and weaknesses across these many categories.
 
-When citing a multi-author paper, you may save space by using ``et alia'',
-shortened to ``\etal'' (not ``{\em et.\ al.}'' as ``{\em et}'' is a complete word.)
-However, use it only when there are three or more authors.  Thus, the
-following is correct: ``
-   Frobnication has been trendy lately.
-   It was introduced by Alpher~\cite{Alpher02}, and subsequently developed by
-   Alpher and Fotheringham-Smythe~\cite{Alpher03}, and Alpher \etal~\cite{Alpher04}.''
+We propose a VideoQA benchmark that addresses these concerns. Our benchmark is automatically generated in a pipeline inspired by \cite{hudson2019gqa} to combine question templates with Charades action annotations and Action Genome's spatio-temporal scene graphs. This process combines a variety of linguistic structures with the content of over 10,000 videos, producing \mgm{add here} questions. These questions have a wide variety of lengths, complexities, and structures. With this generation pipeline, we have tight control over the contents of each question, providing a better ability to balance the answer distribution and create a wide suite of metrics.
 
-This is incorrect: ``... subsequently developed by Alpher \etal~\cite{Alpher03} ...''
-because reference~\cite{Alpher03} has just two authors.  If you use the
-\verb'\etal' macro provided, then you need not worry about double periods
-when used at the end of a sentence as in Alpher \etal.
+We have made much progress within the DREU timeline, and we plan to continue the project through the fall. By the end of our contributions will be: 1) a large VideoQA dataset of question answer pairs requiring multi-step reasoning and 2) a wide suite of metrics to thoroughly evaluate current models.
 
-For this citation style, keep multiple citations in numerical (not
-chronological) order, so prefer \cite{Alpher03,Alpher02,Authors14} to
-\cite{Alpher02,Alpher03,Authors14}.
+\section{Prior Work}
 
+\subsection{ImageQA}
 
-\begin{figure*}
+At first, the Visual Question Answering task was mostly restricted to Image Question Answering. A wide variety of benchmarking datasets were created with the hopes of analyzing the reasoning abilities of ImageQA models \cite{johnson2017clevr, hudson2019gqa, antol2015vqa, zellers2019recognition, goyal2017making, krishna2017visual, zhu2016visual7w, kim2020answering}. Benchmarks vary in input, from synthetic datasets \cite{johnson2017clevr}, to cartoons \cite{antol2015vqa}, to charts \cite{kim2017deepstory}, to real-world images \cite{hudson2019gqa, krishna2017visual, zhu2016visual7w, goyal2017making, zellers2019recognition, antol2015vqa}. They also vary in the type of content asked, from the 7W's (who, what, where, when, which, why, how) \cite{zhu2016visual7w}, to commonsense reasoning \cite{zellers2019recognition}, to compositional reasoning \cite{johnson2017clevr, hudson2019gqa}, to spatial localization \cite{zhu2016visual7w, krishna2017visual, hudson2019gqa}. These benchmarks facilitated the development of many models made to tackle these challenges by measuring their spatial reasoning abilities \cite{}. However, many of these datasets contained real world priors exacerbated by human annotation bias, resulting in inflated accuracy scores and a lack of understanding of the actual reasoning abilities of these modes \cite{goyal2017making, hudson2019gqa}. For example, in the VQA1.0 dataset, the answer distribution for questions starting with "What sport is..." was 41\% "Tennis". These types of priors meant that models could answer over 50\% of the questions correctly without considering the visual input \cite{goyal2017making}. Once these issues came to light, some new benchmarks attempted to mitigate these biases. VQA2.0 took many of the questions from VQA1.0 and added a similar picture leading to a different answer. This procedure helped, but was only applied to 71\% of questions due to annotation difficulties. Models measured on VQA2.0 could still answer 67\% of binary questions and 27\% of open questions correctly without seeing visual input \cite{hudson2019gqa}. The GQA dataset addressed these biases by creating equal numbers of binary yes/no questions per category, and the smoothed answer distribution in open ended questions to retain but reduce the power of real world priors \cite{hudson2019gqa}. Our benchmark is similar to GQA in that it mitigates biases by smoothing answer distributions. However, it will move beyond just spatial reasoning and into the temporal domain. 
+
+\subsection{VideoQA}
+
+\mgm{how to include new information here without being too repetitive with the introduction?}
+
+A growing interest in Visual Question Answering with videos as the visual input has lead to the development of some VideoQA benchmarks as well \cite{tapaswi2016movieqa, lei2018tvqa, jang2017tgif, kim2017deepstory, xu2017video, maharaj2017dataset, zeng2016leveraging, yu2019activitynet}. Some incorporate both visual input and dialogue from a TV show or Movie \cite{tapaswi2016movieqa, lei2018tvqa, kim2017deepstory}, several of which ask plot-based, not exclusively vision based questions \cite{tapaswi2016movieqa, kim2017deepstory}. Models trained on these datasets tend to depend heavily on dialogue for long-term temporal reasoning \cite{tapaswi2016movieqa, lei2018tvqa}. 
+
+Benchmarks measuring purely visual temporal reasoning without dialogue datasets exclusively ask questions that would be able to be answered from a frame image of the video,  questions that apply to the entire video, or questions that ask "what happened before/after/while $<$action$>$?" \mgm{is there a better way to explain this type of question?}. These benchmarks also tend to use over short videos. All but \cite{yu2019activitynet, xu2017video} refer to videos of less than 10 seconds long. They also tend to be small. Some have automatically generated questions from image descriptions \cite{xu2017video,zeng2016leveraging}, some let people choose from drop down menus \cite{tgif}, and others use humans to create questions \cite{yu2019activitynet, tapaswi2016movieqa, jang2017tgif, lei2018tvqa}. The largest dataset with solely human generated questions is \cite{lei2018tvqa} with 152.5K question answer pairs, and the largest dataset with solely generated questions is \cite{maharaj2017dataset} with 349K question answer pairs. \mgm{add in figure VG slide 5, and table.} Our dataset is purely vision based, works on videos of 30-90 seconds long, generates \mgm{add here} question answer pairs and evaluates complex and multi-step temporal reasoning.
+
+\begin{figure}[t]
 \begin{center}
-\fbox{\rule{0pt}{2in} \rule{.9\linewidth}{0pt}}
+\includegraphics[width=0.8\linewidth]{figure_videoQA.png}
 \end{center}
-   \caption{Example of a short caption, which should be centered.}
-\label{fig:short}
-\end{figure*}
+   \caption{The shortcomings of current VideoQA models.}
+\label{fig:long}
+\label{fig:onecol}
+\end{figure}
 
-%------------------------------------------------------------------------
-\section{Formatting your paper}
+%Expanding question-answering to videos has been gaining interest lately \mgm{passive voice and bad sentence}, and a small number of datasets have been produced. Some of these datasets incorporate both visual input and dialogue from a TV show or Movie \cite{}, and several of which ask plot-based, not exclusively vision based questions \cite{}. This is an important task, but since models based on these datasets tend to depend heavily on dialogue for long-term temporal reasoning \cite{}, our benchmark will focus on purely visual temporal reasoning. Of current benchmarks doing purely visual temporal reasoning, all but \cite{} refer to videos of less than 10 seconds long. Futhermore, all of them reason in simple (change wording) ways over time \cite{}. These are limited to x, y, z, frame based. MSRVTT-QA is also mostly 2 types of questions. Our dataset will be purely vision based, work on videos of 30-90 seconds long, and require a model to perform complex temporal reasoning. 
 
-All text must be in a two-column format. The total allowable width of the
-text area is $6\frac78$ inches (17.5 cm) wide by $8\frac78$ inches (22.54
-cm) high. Columns are to be $3\frac14$ inches (8.25 cm) wide, with a
-$\frac{5}{16}$ inch (0.8 cm) space between them. The main title (on the
-first page) should begin 1.0 inch (2.54 cm) from the top edge of the
-page. The second and following pages should begin 1.0 inch (2.54 cm) from
-the top edge. On all pages, the bottom margin should be 1-1/8 inches (2.86
-cm) from the bottom edge of the page for $8.5 \times 11$-inch paper; for A4
-paper, approximately 1-5/8 inches (4.13 cm) from the bottom edge of the
-page.
+\subsection{Compositional Reasoning}
 
-%-------------------------------------------------------------------------
-\subsection{Margins and page numbering}
-
-All printed material, including text, illustrations, and charts, must be kept
-within a print area 6-7/8 inches (17.5 cm) wide by 8-7/8 inches (22.54 cm)
-high.
-Page numbers should be in footer with page numbers, centered and .75
-inches from the bottom of the page and make it start at the correct page
-number rather than the 4321 in the example.  To do this fine the line (around
-line 23)
-\begin{verbatim}
-%\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{4321}
-\end{verbatim}
-where the number 4321 is your assigned starting page.
-
-Make sure the first page is numbered by commenting out the first page being
-empty on line 46
-\begin{verbatim}
-%\thispagestyle{empty}
-\end{verbatim}
+As questions become more complex, they often require of multiple reasoning steps in order to answer them. For example, the question "Was the person running or sitting for longer?" first requires finding the start and end of when the person was running and sitting, subtracting the start from the end, then comparing the lengths. This constrained set of logical steps (e.g. action localization, subtraction, comparison, etc) are building blocks that can be reordered to respond to a wide variety of different questions. \mgm{Figure?} This multi-step reasoning is called compositional reasoning because the overall understanding is composed of a series of substeps. Humans use compositional reasoning to learn quickly and generalize to novel combinations of ideas \cite{tani2014self, lake2018generalization, schulz2016probing}. 
 
 
-%-------------------------------------------------------------------------
-\subsection{Type-style and fonts}
-
-Wherever Times is specified, Times Roman may also be used. If neither is
-available on your word processor, please use the font closest in
-appearance to Times to which you have access.
-
-MAIN TITLE. Center the title 1-3/8 inches (3.49 cm) from the top edge of
-the first page. The title should be in Times 14-point, boldface type.
-Capitalize the first letter of nouns, pronouns, verbs, adjectives, and
-adverbs; do not capitalize articles, coordinate conjunctions, or
-prepositions (unless the title begins with such a word). Leave two blank
-lines after the title.
-
-AUTHOR NAME(s) and AFFILIATION(s) are to be centered beneath the title
-and printed in Times 12-point, non-boldface type. This information is to
-be followed by two blank lines.
-
-The ABSTRACT and MAIN TEXT are to be in a two-column format.
-
-MAIN TEXT. Type main text in 10-point Times, single-spaced. Do NOT use
-double-spacing. All paragraphs should be indented 1 pica (approx. 1/6
-inch or 0.422 cm). Make sure your text is fully justified---that is,
-flush left and flush right. Please do not place any additional blank
-lines between paragraphs.
-
-Figure and table captions should be 9-point Roman type as in
-Figures~\ref{fig:onecol} and~\ref{fig:short}.  Short captions should be centred.
-
-\noindent Callouts should be 9-point Helvetica, non-boldface type.
-Initially capitalize only the first word of section titles and first-,
-second-, and third-order headings.
-
-FIRST-ORDER HEADINGS. (For example, {\large \bf 1. Introduction})
-should be Times 12-point boldface, initially capitalized, flush left,
-with one blank line before, and one blank line after.
-
-SECOND-ORDER HEADINGS. (For example, { \bf 1.1. Database elements})
-should be Times 11-point boldface, initially capitalized, flush left,
-with one blank line before, and one after. If you require a third-order
-heading (we discourage it), use 10-point Times, boldface, initially
-capitalized, flush left, preceded by one blank line, followed by a period
-and your text on the same line.
-
-%-------------------------------------------------------------------------
-\subsection{Footnotes}
-
-Please use footnotes\footnote {This is what a footnote looks like.  It
-often distracts the reader from the main flow of the argument.} sparingly.
-Indeed, try to avoid footnotes altogether and include necessary peripheral
-observations in
-the text (within parentheses, if you prefer, as in this sentence).  If you
-wish to use a footnote, place it at the bottom of the column on the page on
-which it is referenced. Use Times 8-point type, single-spaced.
-
-
-%-------------------------------------------------------------------------
-\subsection{References}
-
-List and number all bibliographical references in 9-point Times,
-single-spaced, at the end of your paper. When referenced in the text,
-enclose the citation number in square brackets, for
-example~\cite{Authors14}.  Where appropriate, include the name(s) of
-editors of referenced books.
-
-\begin{table}
+\begin{figure}[t]
 \begin{center}
-\begin{tabular}{|l|c|}
-\hline
-Method & Frobnability \\
-\hline\hline
-Theirs & Frumpy \\
-Yours & Frobbly \\
-Ours & Makes one's heart Frob\\
-\hline
-\end{tabular}
+\includegraphics[width=0.8\linewidth]{figure_composition.png}
 \end{center}
-\caption{Results.   Ours is better.}
-\end{table}
-
-%-------------------------------------------------------------------------
-\subsection{Illustrations, graphs, and photographs}
-
-All graphics should be centered.  Please ensure that any point you wish to
-make is resolvable in a printed copy of the paper.  Resize fonts in figures
-to match the font in the body text, and choose line widths which render
-effectively in print.  Many readers (and reviewers), even of an electronic
-copy, will choose to print your paper in order to read it.  You cannot
-insist that they do otherwise, and therefore must not assume that they can
-zoom in to see tiny details on a graphic.
-
-When placing figures in \LaTeX, it's almost always best to use
-\verb+\includegraphics+, and to specify the  figure width as a multiple of
-the line width as in the example below
-{\small\begin{verbatim}
-   \usepackage[dvips]{graphicx} ...
-   \includegraphics[width=0.8\linewidth]
-                   {myfile.eps}
-\end{verbatim}
-}
+   \caption{The substeps required to answer the question "Was the person running or sitting for longer?".}
+\label{fig:long}
+\label{fig:onecol}
+\end{figure}
 
 
-%-------------------------------------------------------------------------
-\subsection{Color}
 
-Please refer to the author guidelines on the CVPR 2020 web page for a discussion
-of the use of color in your document.
+Compositional questions have been used by ImageQA benchmarks to rigorously test models. Compositional questions tend to be longer, more complex, and use a wider variety of vocabulary. Furthermore, they can better test a model's reasoning ability by both requiring multiple steps of reasoning to answer the questions and by allowing for datasets to test generalizaton to novel compositions \cite{johnson2017clevr, hudson2019gqa}. For example, on the CLEVR dataset, the training questions could include the phrases "right of cube" and "behind sphere", but not "right of sphere" as a combination. Testing on this novel combination "right of sphere" in the test set tests a model's ability to generalize \cite{lake2018generalization, johnson2017clevr}. Many questions relevant to reasoning over videos require multi-step reasoning. A simple example covered by current datasets involves first localizing in time, then reasoning about that specific time. For example, this question from \cite{jang2017tgif}, "What does the bear on the right do after sitting?", requires finding when the bear stops sitting, then determining his activity after that. Another way to reason compositionally is to refer to subjects indirectly, as the ImageQA benchmark \cite{hudson2019gqa} does with "What color is the food on the red object to the left of the girl?". Some ImageQA benchmarks use compositional reasoning extensively \cite{johnson2017clevr, hudson2019gqa}, but no VideoQA datasets go beyond two steps of compositional reasoning. Although these logical building block steps have been defined for ImageQA \cite{cheng2015break}, there are no compositional reasoning steps defined for temporal reasoning. Current models have struggled with multi-step reasoning, motivating a benchmark like ours that specifically explores compositional reasoning \cite{fan2019heterogeneous}.
 
-%------------------------------------------------------------------------
-\section{Final copy}
 
-You must include your signed IEEE copyright release form when you submit
-your finished paper. We MUST have this form before your paper can be
-published in the proceedings.
+\subsection{Scene Graphs}
 
-Please direct any questions to the production editor in charge of these 
-proceedings at the IEEE Computer Society Press: 
-\url{https://www.computer.org/about/contact}. 
+Scene graphs are a symbolic representation of an image \cite{krishna2017visual}. The graph consists of nodes representing the objects in the image, and edges representing relationships between these nodes. For each object node there are associated attributes. For example, an image with a man wearing white shorts would have an object node for "shorts" with "white" as an attribute and an object node for "man". These nodes would be connected by an edge representing the relationship "wearing". Creating this symbolic representation of an image reduces it to its semantic parts. Using this representation has improved performance on many visual tasks such as visual question answering \cite{johnson2017inferring}, visual question answer generation \cite{hudson2019gqa} relationship modeling \cite{krishna2018referring}, image captioning \cite{anderson2016spice}, image generation \cite{johnson2018image, ashual2019specifying}, and image retrieval \cite{ashual2019specifying, johnson2015image}.
+
+Inspired by Visual Genome's scene graphs, \cite{ji2020action} annotated spatiotemporal scene graphs to create Action Genome. Spatio-temporal scene graphs consist of nodes representing objects and edges representing relationships between them \mgm{(add in that these relationships are 3 categories?)}. Each of these objects are associated with a specific frame in the video. The resulting effect is that a subject's relationships with the objects changes over time. Our project will use spatial temporal scene graphs to generate questions about video. 
+
+\section{Methods}
+
+To create our benchmark, we first established what types of temporal reasoning to explore. As mentioned previously, other vision-based datasets have looked exclusively questions that could be answered with one frame, those that look at the entire video, and those that ask "what happened" before, after, or while an event  \cite{tapaswi2016movieqa, lei2018tvqa, jang2017tgif, kim2017deepstory, xu2017video, maharaj2017dataset, zeng2016leveraging, yu2019activitynet}. However, there are more types of temporal reasoning yet to be explored and tested on models. These new types of temporal reasoning include reasoning over a specified part of a video instead of just action recognition. \mgm{rewrite sentence} Since activities are composed of a subject's changing relationship with objects, questions can ask about those changes. Questions should also probe action sequencing and understanding ordering of actions within the video and when actions precede, succeed or coexist with one another. Current datasets do not ask questions about the lengths of time activities occurred. Beyond temporal reasoning, current VideoQA datasets do not do comparitive or logical (i.e. "and", "xor") questions. Our benchmark requires all the above types of reasoning to succeed. Future datasets may be able to expand even more by including sequences, bounding boxes, and time identifiers (e.g. she started running at 10.5 seconds) as answers.\mgm{I think make this a bullet list. Too weird for transition words}
+
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figure_reasoning.png}
+\end{center}
+   \caption{Various types of temporal reasoning.}
+\label{fig:long}
+\label{fig:onecol}
+\end{figure}
+
+
+
+Beyond exploring a wider variety of temporal concepts, an ideal benchmark would 1) be large, 2) mitigate biases in the answer distribution, 3) allow for novel compositions and 4) include a large suite of metrics. In order to achieve these goals, we automatically generate questions using spatio-temporal scene graphs using a pipeline inspired by \cite{hudson2019gqa}.
+
+The question generation consists of two parts: 1) augmenting spatio-temporal scene graph representations of videos to create detailed representations and 2) building question templates with spaces to fill in video-specific content. The first part of our pipeline uses dataset annotations from Action Genome and Charades \cite{ji2020action, sigurdsson2016hollywood} on Charades videos. These 30-90 second videos are filmed by non-professionals who act out everyday activities using 36 objects. Charades annotates the times actions occur, and Action Genome annotates attention, spatial, and contact relationships on a sample of frames. \mgm{figure} To make these scene graphs applicable for question answering, we first combine the annotations from both datasets into one data structure. We then created object and relationship nodes for action segmentation, adding in charades actions as relationships category. We then supplement current annotations with their logical extensions. For example, if a person is carrying something, they are also holding it and touching it. With these adjustments, we have a filled out spatio-temporal scene graph combining two datasets worth of annotations into a structure that can be fed into the question templates. An important limitation to note is that although these scene graphs are detailed, our questions depend on their annotations to create our questions, so any errors in those datasets affects ours.
+    
+The second part of our pipeline consists of question templates that each have a natural language sentence with tags representing different elements categories in the video, such as in the question "What object were they $<$contact relationship$>$?". Each template also contains information about the question's structural and semantic contents. To generate a question-answer pair, our system combines a spatio-temporal scene graph with these questions by replacing the tags with elements of the corresponding types. For a video where the person is holding a blanket while sitting on a chair, our pipeline would create both questions "What object were they holding?" and "What object were they sitting on?". Given the scene graph information, we then automatically determine the answers "dish" and "chair" respectively. These tags can be filled with both direct and indirect references. For example, an $<$objects$>$ tag's direct reference would be "dish" but an indirect reference would be "the object they were holding". We ensure that there are no questions that give away the answers (e.g. "Were they holding the object they were holding?"). Indirect references can also be recursive. The object tag listed above could also be replaced with "the object they were holding after closing the door" or "the object they were holding after the shortest action". Indirect references require locating the referred object, action, relationship, or time in video before reasoning about the question as a whole, leading to complex questions that require multiple reasoning steps. 
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figure_indirect.png}
+\end{center}
+   \caption{Various types of temporal reasoning.}
+\label{fig:long}
+\label{fig:onecol}
+\end{figure}
+
+
+
+This procedure to generate questions allows us to work towards the qualities of an ideal benchmark.
+    
+    \textbf{1) The benchmark is large} 
+    
+    Human annotation of question-answer pairs for video is time consuming and expensive. Automatically generating questions allows us to create a much larger dataset of \mgm{add here}. Automatically generated datasets have previously been criticized for lacking diversity \cite{yu2019activitynet}. We have \mgm{add} templates asking a wide variety of questions. Each template is also associated with multiple natural language versions of the same question. Indirect reference tags expand complexity even further.
+    
+    \mgm{make some sort of graphic comparing size?}
+
+    \textbf{2) The benchmark mitigates biases in answer distribution}
+    
+    Many ImageQA benchmarks do not accurately determine a model's reasoning ability because skews in their answer distributions reduce dependence on visual input and increase reliance on the relative prevalence of different answers in the data \cite{hudson2019gqa, goyal2017making}. Although there has not been an in depth analysis of biased answer sets in Video QA biases, in our dataset there is a possibility for skewed answer distributions. For example, a person is covered by a blanket 6721 times but standing on a blanket only 32 times. Consequently, the answer to the question "What were they doing to the blanket?" is much more likely to be "covered by" rather than "standing on". To avoid inflated accuracy scores, we want to retain the same distribution (i.e. still have more instances where the answer is "covered by"), but smooth the answer distribution to make the differences less extreme. We balance the answer distribution for each category using the same process as \cite{hudson2019gqa} to downsample highly popular answers to shift probability into the tail of the distribution. \mgm{Talk about the process in detail for doing that? Global vs local variables}. \mgm{Include graphs}. Our question generation pipeline allows for this balancing because we have the structural and semantic information associated with each template to split the questions into relevant categories before balancing. 
+    
+    \begin{figure}[t]
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figure_compareQs.png}
+\end{center}
+   \caption{Various types of temporal reasoning.}
+\label{fig:long}
+\label{fig:onecol}
+\end{figure}
+
+    
+    
+    3) \textbf{The benchmark tests novel composition}
+    
+    An important part of human reasoning is the ability to generalize concepts of the same category to novel compositions. For example, in the training set the model may see the phrases "before running" and "the action they did the longest". Then, in the test set, we can test if they understand the idea of "before the action they did the longest". We are able to create such a training and testing split to judge these novel compositions because we have knowledge of what temporal localization, logical reasoning, and indirect tags are in each question. \mgm{Potentially VG slide 18 for how to solve them?}
+    
+
+
+    
+    \textbf{4) The benchmark has a suite of new metrics}
+    
+    Finally, we want to be able to complexly analyze a model's various abilities across different types of temporal and logical reasoning. We can achieve better measurements by splitting the data into different training and test sets based on qualities of the questions. We are able to do this because our pipeline gives us control over the content of all the questions. We have not accomplished this step thus far in the 10 weeks of the DREU program, however we plan to incorporate it by the end of the summer. 
+
+\section{Results}
+
+We have implemented most of this pipeline, besides the metrics which we plan to implement soon. 
+
+Break down the dataset into better stats. 
+
+Do things like average length of question vs average length of other questions in other datasets
+
+Example questions
+
+Note that final dataset does not have access to the Charades and AG annotations
+
+
+
+\section{Future work}
+
+Maybe include logical steps breakdown here? or above
+
+Plan to continue the project beyond the 10 weeks of DREU. We want this benchmark to be able to provide a complex analysis of the abilities of VideoQA models. Therefore, metrics and apply to current models (cite (and maybe summarize? nah))
+
+Include table of metrics here. 
+
+Leaving bounding box and some seconds/minutes stuff to future work. 
 
 
 {\small
